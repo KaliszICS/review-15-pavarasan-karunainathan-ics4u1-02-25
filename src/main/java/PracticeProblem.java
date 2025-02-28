@@ -3,6 +3,10 @@ import java.util.HashMap;
 public class PracticeProblem{
 	static int goodString(String str){
 		int mincost = 0x3f3f3f3f;
+		/* if it was guaranteed that all letters were to be in lowercase
+		 * and part of the english alphabet this could be changed
+		 * to an integer array of size 26
+		 */
 		HashMap<Character, Integer> locations = new HashMap<Character, Integer>();
 		for(int i = 0; i < str.length(); i++){
 			char currentLetter = str.charAt(i);
