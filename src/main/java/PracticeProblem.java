@@ -1,11 +1,16 @@
+import java.util.HashMap;
+
 public class PracticeProblem{
 	static int goodString(String str){
 		int mincost = 0x3f3f3f3f;
+		HashMap<Character, Integer> locations = new HashMap<Character, Integer>();
 		for(int i = 0; i < str.length(); i++){
-			int lower = str.indexOf(str.charAt(i));
-			int upper = str.lastIndexOf(str.charAt(i));
-			if(upper != lower){
-				mincost = Math.min(mincost, lower + str.length()-1 - upper);
+			char currentLetter = str.charAt(i);
+			if(locations.containsKey(currentLetter)){
+				int cost = locations.get(currentLetter) + str.length() - 1 - i;
+				mincost = Math.min(mincost, cost);
+			}else{
+				locations.put(currentLetter, i);
 			}
 		}
 		if(mincost == 0x3f3f3f3f){
